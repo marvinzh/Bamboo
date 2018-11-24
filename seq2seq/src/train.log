@@ -1,0 +1,27 @@
+11-24 16:46:07 [INFO]: Epoch: 0/10, cost: 9.208587, Perplexity: 20270.863493
+11-24 16:46:13 [INFO]: Epoch: 1/10, cost: 9.155949, Perplexity: 19153.734090
+11-24 16:46:20 [INFO]: Epoch: 2/10, cost: 8.577891, Perplexity: 10277.664800
+11-24 16:46:27 [INFO]: Epoch: 3/10, cost: 8.383953, Perplexity: 8340.453386
+11-24 16:48:33 [INFO]: Epoch: 0/10, cost: 9.208635, Perplexity: 20271.915171
+11-24 16:48:39 [INFO]: Epoch: 1/10, cost: 9.156895, Perplexity: 19173.254820
+11-24 16:48:46 [INFO]: Epoch: 2/10, cost: 8.599865, Perplexity: 10523.788058
+11-24 16:48:52 [INFO]: Epoch: 3/10, cost: 8.391531, Perplexity: 8408.790326
+11-24 16:48:58 [INFO]: Epoch: 4/10, cost: 8.284846, Perplexity: 7496.126329
+11-24 16:49:05 [INFO]: Epoch: 5/10, cost: 8.249719, Perplexity: 7217.851950
+11-24 16:49:11 [INFO]: Epoch: 6/10, cost: 8.206682, Perplexity: 6890.959594
+11-24 16:49:18 [INFO]: Epoch: 7/10, cost: 8.148832, Perplexity: 6474.748528
+11-24 16:49:25 [INFO]: Epoch: 8/10, cost: 8.126693, Perplexity: 6322.206787
+11-24 16:49:32 [INFO]: Epoch: 9/10, cost: 8.076510, Perplexity: 5989.599261
+2018-11-24 16:58:13,317 [INFO]: Training args:Namespace(batch_size=64, dec_embed=64, dec_hidden=128, dec_proj=128, dec_vocab=10000, enc_embed=64, enc_hidden=128, enc_vocab=10000, epoches=10, log='train.log', n_gpu=0, source=None, target=None, valid_source=None, valid_target=None)
+2018-11-24 16:58:19,868 [INFO]: Epoch: 0/10, cost: 9.208497, Perplexity: 20268.898288
+2018-11-24 16:58:26,325 [INFO]: Epoch: 1/10, cost: 9.148857, Perplexity: 19008.005899
+2018-11-24 16:58:32,912 [INFO]: Epoch: 2/10, cost: 8.596598, Perplexity: 10486.817782
+2018-11-24 16:58:39,676 [INFO]: Epoch: 3/10, cost: 8.426132, Perplexity: 8728.035814
+2018-11-24 16:58:46,223 [INFO]: Epoch: 4/10, cost: 8.338860, Perplexity: 7945.099375
+2018-11-24 16:58:52,719 [INFO]: Epoch: 5/10, cost: 8.282064, Perplexity: 7473.701510
+2018-11-24 16:58:58,893 [INFO]: Epoch: 6/10, cost: 8.206639, Perplexity: 6890.639710
+2018-11-24 16:59:05,448 [INFO]: Epoch: 7/10, cost: 8.161533, Perplexity: 6563.921908
+2018-11-24 16:59:12,185 [INFO]: Epoch: 8/10, cost: 8.118242, Perplexity: 6264.929131
+2018-11-24 16:59:19,080 [INFO]: Epoch: 9/10, cost: 8.062057, Perplexity: 5897.095590
+2018-11-24 17:01:37,935 [INFO]: Training args:Namespace(batch_size=64, dec_embed=64, dec_hidden=128, dec_proj=128, dec_vocab=10000, enc_embed=64, enc_hidden=128, enc_vocab=10000, epoches=10, log='train.log', n_gpu=0, source=None, target=None, valid_source=None, valid_target=None)
+2018-11-24 17:01:44,464 [INFO]: Epoch: 0/10, cost: 9.208562, Perplexity: 20270.306745
