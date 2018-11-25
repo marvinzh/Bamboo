@@ -71,12 +71,13 @@ if __name__ == "__main__":
     if args.log is not None:
         # redirect output steam to screen
         console = logging.StreamHandler()
-        formatter = logging.Formatter("%(asctime)s [%(levelname)s]: %(message)s")
+        formatter = logging.Formatter(
+            "%(asctime)s [%(levelname)s]: %(message)s")
         console.setFormatter(formatter)
         console.setLevel(logging.INFO)
         logging.getLogger('').addHandler(console)
 
-    logging.info("Training args:%s"%args)
+    logging.info("Training args:%s" % args)
 
     data = dataset.generate_TS_data(
         [10, 13, 64], sos=9998, eos=9999, ctx=mx.cpu())
