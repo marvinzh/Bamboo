@@ -16,6 +16,7 @@ def parse_arguments():
 
     parser.add_argument("--data", help="")
     parser.add_argument("--epochs", type=int, default=50, help="")
+    parser.add_argument("--report_interval","-ri", type=int, default=100,help="")
     parser.add_argument("--cuda",action="store_true")
     args = parser.parse_args()
     return args
@@ -65,13 +66,18 @@ if __name__=="__main__":
         rnnlm.cuda()
 
     for epoch in range(args.epochs):
-        for x, y in train_data:
+        acc_loss=0.
+        for i, (x, y) in enumerate(train_data):
             if args.cuda:
                 x=x.cuda()
                 y=y.cuda()
 
             loss=train_batch(rnnlm, x, y, loss_fn, optim)
-            print("Epoch [%2d/%2d], Perplexity: %.4f"%(epoch, args.epochs, math.exp(loss)))
+            acc_loss+=loss
+            if i%args.report_interval ==0:
+                ppl = math.exp(acc_loss / args.report_interval)
+                acc_loss=0.
+                print("Epoch [%2d/%2d], Perplexity: %.4f"%(epoch, args.epochs, ppl))
 
         print("store checkpoint: exp/ckpt.%d"%epoch)
         torch.save(rnnlm.state_dict(), "exp/ckpt.%d"%epoch)
