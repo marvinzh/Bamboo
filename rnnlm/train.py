@@ -67,12 +67,12 @@ if __name__=="__main__":
     for epoch in range(args.epochs):
         for x, y in train_data:
             if args.cuda:
-                x.cuda()
-                y.cuda()
+                x=x.cuda()
+                y=y.cuda()
 
             loss=train_batch(rnnlm, x, y, loss_fn, optim)
             print("Epoch [%2d/%2d], Perplexity: %.4f"%(epoch, args.epochs, math.exp(loss)))
-            
+
         print("store checkpoint: exp/ckpt.%d"%epoch)
         torch.save(rnnlm.state_dict(), "exp/ckpt.%d"%epoch)
     
