@@ -70,7 +70,7 @@ def plot_loss(vis_env, loss_records):
 def plot_example(vis_env, examples):
     string = ""
     for i, ex in enumerate(examples):
-        string+="Sample (%d epoch)<br>:"%i + ex + "<br><br>"
+        string+="Sample (%d epoch):<br>"%i + ex + "<br><br>"
 
     vis_env.text(string, win="example")
 
