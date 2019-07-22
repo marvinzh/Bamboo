@@ -24,15 +24,16 @@ class RNNLM(torch.nn.Module):
         self.eval()
         sos = lang.vocab["<sos>"]
         eos = lang.vocab["<eos>"]
-        
+
         hypos = []
         next_word = sos if not start_words else start_words
         while next_word!= eos or len(hypos)<max_len:
             hypos.append(next_word)
             inputs = torch.LongTensor(hypos)
             inputs = inputs.unsqueeze(0)
+            inputs= inputs.cuda()
             outputs = self.forward(inputs)
-            probs = torch.softmax(outputs[0][-1],dim=0).detach().numpy()
+            probs = torch.softmax(outputs[0][-1],dim=0).cpu().detach().numpy()
             next_word = np.random.choice(range(len(probs)), p=probs)
             
         
