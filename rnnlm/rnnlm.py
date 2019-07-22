@@ -21,6 +21,7 @@ class RNNLM(torch.nn.Module):
         return out
     
     def sampling(self, lang, start_words="", max_len=50):
+        self.eval()
         sos = lang.vocab["<sos>"]
         eos = lang.vocab["<eos>"]
         

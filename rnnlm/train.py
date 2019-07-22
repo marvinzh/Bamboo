@@ -106,6 +106,7 @@ if __name__=="__main__":
             loss=train_batch(rnnlm, x, y, loss_fn, optim)
             loss_records.append(loss)
             acc_loss+=loss
+            
             if i%args.report_interval ==0:
                 ppl = math.exp(acc_loss / args.report_interval)
                 acc_loss=0.
