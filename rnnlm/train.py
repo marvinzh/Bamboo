@@ -114,7 +114,7 @@ if __name__=="__main__":
                 plot_loss(vis_env,loss_records)
 
         example = rnnlm.sampling(poetry_data.lang)
-        examples.append("".join(example))
+        examples.append("".join(example[1:]))
         plot_example(vis_env, examples)
         print("store checkpoint: exp/ckpt.%d"%epoch)
         torch.save(rnnlm.state_dict(), "exp/ckpt.%d"%epoch)
