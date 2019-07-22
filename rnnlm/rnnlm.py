@@ -27,7 +27,7 @@ class RNNLM(torch.nn.Module):
 
         hypos = []
         next_word = sos if not start_words else start_words
-        while next_word!= eos or len(hypos)<max_len:
+        while next_word!= eos and len(hypos)<max_len:
             hypos.append(next_word)
             inputs = torch.LongTensor(hypos)
             inputs = inputs.unsqueeze(0)

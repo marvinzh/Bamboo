@@ -69,7 +69,7 @@ def plot_loss(vis_env, loss_records):
 
 def plot_example(vis_env, examples):
     string = ""
-    for i,ex in enumerate(examples):
+    for i, ex in enumerate(examples):
         string+="Sample (%d epoch)<br>:"%i + ex + "<br><br>"
 
     vis_env.text(string, win="example")
@@ -106,7 +106,7 @@ if __name__=="__main__":
             loss=train_batch(rnnlm, x, y, loss_fn, optim)
             loss_records.append(loss)
             acc_loss+=loss
-            
+
             if i%args.report_interval ==0:
                 ppl = math.exp(acc_loss / args.report_interval)
                 acc_loss=0.
@@ -114,7 +114,7 @@ if __name__=="__main__":
                 plot_loss(vis_env,loss_records)
 
         example = rnnlm.sampling(poetry_data.lang)
-        examples.append(example)
+        examples.append("".join(example))
         plot_example(vis_env, examples)
         print("store checkpoint: exp/ckpt.%d"%epoch)
         torch.save(rnnlm.state_dict(), "exp/ckpt.%d"%epoch)
