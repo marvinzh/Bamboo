@@ -36,7 +36,7 @@ def parse_arguments():
 
     return args
 
-def train_batch(model, xs, ys, loss_fn, optimizer):
+def train_batch(model, xs, ys, loss_fn, optimizer,clip=.3):
     model.train()
     optimizer.zero_grad()
     
@@ -46,6 +46,8 @@ def train_batch(model, xs, ys, loss_fn, optimizer):
     
     loss = loss_fn(os, ys)
     loss.backward()
+    torch.nn.utils.clip_grad_norm_(model.parameters(),clip)
+
     optimizer.step()
     
     return loss
