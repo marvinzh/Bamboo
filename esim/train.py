@@ -47,6 +47,28 @@ def train_step(model, xs, ys, loss_fn, optimizer, clip=.3):
     optimizer.step()
     return loss
 
+def valid_step(model, valid_data):
+    def accuracy(preds, targets):
+        cnt=0
+        for pred, t in zip(preds,targets):
+            if pred == t:
+                cnt+=1
+
+        return cnt / len(preds)
+
+    model.eval()
+    model.cpu()
+
+    targets=[]
+    preds = []
+    for sent1, sent2, y in valid_data:
+        logits = model(sent1, sent2)
+        _, idx= logits.topk(1)
+        preds.append(idx.item())
+        targets.append(y.item())
+    
+    return accuracy(preds, targets)
+
 
 if __name__ == "__main__":
 
@@ -65,10 +87,10 @@ if __name__ == "__main__":
     loss_fn = torch.nn.CrossEntropyLoss()
     optim = torch.optim.Adam(model.parameters())
 
-    if args.cuda:
-        model.cuda()
-
     for epoch in range(args.epochs):
+        if args.cuda:
+            model.cuda()
+
         acc_loss = 0.
         for i, (sent1, sent2, y) in enumerate(train_data):
             if args.cuda:
@@ -82,3 +104,6 @@ if __name__ == "__main__":
                 loss_val = acc_loss / args.report_interval
                 acc_loss = 0.
                 print("Epoch [%2d/%2d], CE: %.4f" % (epoch, args.epochs, loss_val))
+        
+        accuracy = valid_step(model, valid_data)
+        print("validation step, accuracy: %f"%accuracy)
