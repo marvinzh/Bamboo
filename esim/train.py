@@ -74,6 +74,7 @@ if __name__ == "__main__":
             if args.cuda:
                 sent1 = sent1.cuda()
                 sent2 = sent2.cuda()
+                y = y.cuda()
 
             loss = train_step(model, [sent1, sent2], y, loss_fn, optim)
             acc_loss += loss
