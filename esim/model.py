@@ -26,7 +26,6 @@ class ESIM(torch.nn.Module):
         sent1 = sent1.permute(1, 0, 2)
         # (B, H, L2)
         sent2 = sent2.permute(1, 2, 0)
-        
         # (B, L1, L2)
         score = torch.bmm(sent1, sent2)
         weights = torch.softmax(score, dim=2)
