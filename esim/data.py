@@ -1,7 +1,8 @@
 import torch
 from torch.utils.data import Dataset
 from lang import Lang
-3
+from collections import Counter
+
 class SNLIData(Dataset):
     def __init__(self, raw, n_vocab=-1):
         super().__init__()
