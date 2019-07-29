@@ -62,6 +62,8 @@ def valid_step(model, valid_data):
     targets=[]
     preds = []
     for sent1, sent2, y in valid_data:
+        sent1.permute(1,0)
+        sent2.permute(1,0)
         logits = model(sent1, sent2)
         _, idx= logits.topk(1)
         preds.append(idx.item())
