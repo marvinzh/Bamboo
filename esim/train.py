@@ -61,7 +61,7 @@ if __name__ == "__main__":
     valid_data = DataLoader(valid_raw)
 
     model = ESIM(train_raw.lang.size, args.d_embed, args.d_hidden, args.n_layers,
-                 args.d_proj, args.d_v, args.n_layers_cmp, args.d_pred, args.dropout_rate)
+                 args.d_proj, args.d_v, args.n_layers_cmp, args.d_pred, args.dropout)
     loss_fn = torch.nn.CrossEntropyLoss()
     optim = torch.optim.Adam(model.parameters())
 
