@@ -1,3 +1,5 @@
+from collections import Counter
+
 class Lang:
     def __init__(self, corpus, reserved_tokens=[], n_vocab=-1):
         """Language module, extract vocabulary form given corpus
