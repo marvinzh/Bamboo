@@ -65,9 +65,16 @@ if __name__ == "__main__":
     loss_fn = torch.nn.CrossEntropyLoss()
     optim = torch.optim.Adam(model.parameters())
 
+    if args.cuda:
+        model.cuda()
+
     for epoch in range(args.epochs):
         acc_loss = 0.
         for i, (sent1, sent2, y) in enumerate(train_data):
+            if args.cuda:
+                sent1 = sent1.cuda()
+                sent2 = sent2.cuda()
+
             loss = train_step(model, [sent1, sent2], y, loss_fn, optim)
             acc_loss += loss
             if i % report_interval == 0:
