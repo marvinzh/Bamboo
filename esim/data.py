@@ -21,7 +21,7 @@ class SNLIData(Dataset):
             lambda x:self.lang.str2idx(x),
             hypos
         ))
-        self.label2idx = list(set(labels)).sort()
+        self.label2idx = sorted(list(set(labels)))
         self.labels = list(map(
             lambda x: self.label2idx.index(x),
             labels
