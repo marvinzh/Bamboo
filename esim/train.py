@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
             loss = train_step(model, [sent1, sent2], y, loss_fn, optim)
             acc_loss += loss
-            if i % report_interval == 0:
-                loss_val = acc_loss / report_interval
+            if i % args.report_interval == 0:
+                loss_val = acc_loss / args.report_interval
                 acc_loss = 0.
                 print("Epoch [%2d/%2d], CE: %.4f" % (epoch, epochs, loss_val))

@@ -5,9 +5,9 @@ from lang import Lang
 class SNLIData(Dataset):
     def __init__(self, raw, n_vocab=-1):
         super().__init__()
-        premise = list(map(lambda x:x[0], train))
-        hypos = list(map(lambda x:x[1], train))
-        labels = list(map(lambda x:x[2], train))
+        premise = list(map(lambda x:x[0], raw))
+        hypos = list(map(lambda x:x[1], raw))
+        labels = list(map(lambda x:x[2], raw))
         corpus = [item for p in premise for item in p] + [item for h in hypos for item in h]
         cnt = Counter(corpus)
         self.lang = Lang(cnt, n_vocab=n_vocab)
