@@ -14,12 +14,12 @@ def parse_arguments():
     parser.add_argument("valid", help="")
 
     parser.add_argument("--d_embed", "-de", type=int, default=300, help="")
-    parser.add_argument("--d_hidden","-dh", type=int, default=256, help="")
+    parser.add_argument("--d_hidden","-dh", type=int, default=300, help="")
     parser.add_argument("--n_layers","-l", type=int, default=2,help="")
-    parser.add_argument("--d_proj", type=int, default=512,help="")
-    parser.add_argument("--d_v", type=int, default=256, help="")
+    parser.add_argument("--d_proj", type=int, default=300,help="")
+    parser.add_argument("--d_v", type=int, default=300, help="")
     parser.add_argument("--n_layers_cmp", type=int, default=2, help="")
-    parser.add_argument("--d_pred", type=int, default=512, help="")
+    parser.add_argument("--d_pred", type=int, default=300, help="")
 
     parser.add_argument("--dropout",type=float, default=0, help="")
 
