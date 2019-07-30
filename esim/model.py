@@ -6,12 +6,14 @@ class ESIM(torch.nn.Module):
         # input encoding layer
         self.embed = torch.nn.Embedding(n_vocab, d_embed)
         self.in_enc_pre = torch.nn.LSTM(d_embed, d_hidden, n_layers, dropout=dropout_rate, bidirectional=True)
-        self.in_enc_hypo = torch.nn.LSTM(d_embed, d_hidden, n_layers, dropout=dropout_rate, bidirectional=True)
+        self.in_enc_hypo = self.in_enc_pre
+        # self.in_enc_hypo = torch.nn.LSTM(d_embed, d_hidden, n_layers, dropout=dropout_rate, bidirectional=True)
         
         # inference composition
         self.proj = torch.nn.Linear(d_hidden*4*2, d_proj)
         self.cmp_pre = torch.nn.LSTM(d_proj, d_v, n_layers_cmp, bidirectional=True)
-        self.cmp_hypo = torch.nn.LSTM(d_proj, d_v, n_layers_cmp, bidirectional=True)
+        self.cmp_hypo = self.cmp_pre
+        # self.cmp_hypo = torch.nn.LSTM(d_proj, d_v, n_layers_cmp, bidirectional=True)
         
         # prediction
         self.pred_hidden = torch.nn.Linear(d_v*4*2, d_pred)
@@ -65,7 +67,6 @@ class ESIM(torch.nn.Module):
         proj_a = torch.relu(self.proj(m_a))
         proj_b = torch.relu(self.proj(m_b))
         
-        # (L, B ,H)
         v_a,(_,_) = self.cmp_pre(proj_a)
         v_b,(_,_) = self.cmp_hypo(proj_b)
         
